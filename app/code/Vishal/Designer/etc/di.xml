@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Vishal_Designer extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Sample
+ * @package   Vishal_Designer
+ * @copyright 2017 Vishal Gelani
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Vishal Gelani
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Vishal\Designer\Model\Resource\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vishal_designer_post</argument>
+            <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="designer_post_listing_data_source" xsi:type="string">Vishal\Designer\Model\Resource\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
