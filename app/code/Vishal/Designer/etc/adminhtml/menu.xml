@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Vishal_Designer extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Sample
+ * @package   Vishal_Designer
+ * @copyright 2017 Vishal Gelani
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Vishal Gelani
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vishal_Designer::designer" title="Vishal" module="Vishal_Designer" sortOrder="10" resource="Vishal_Designer::designer"/>
+        <add id="Vishal_Designer::elements" title="Designer" module="Vishal_Designer" parent="Vishal_Designer::designer" sortOrder="10"  resource="Vishal_Designer::elements"/>
+        <add id="Vishal_Designer::post" title="Posts" module="Vishal_Designer" parent="Vishal_Designer::elements" sortOrder="10" action="designer/post/" resource="Vishal_Designer::post"/>
+        <add id="Vishal_Designer::category" title="Categories" module="Vishal_Designer" parent="Vishal_Designer::elements" sortOrder="20" action="designer/category/" resource="Vishal_Designer::category"/>
+        <add id="Vishal_Designer::import" title="Import" module="Vishal_Designer" parent="Vishal_Designer::elements" sortOrder="30" action="designer/import/" resource="Vishal_Designer::import"/>
+        <add id="Vishal_Designer::config_designer" title="Configuration" module="Vishal_Designer" parent="Vishal_Designer::elements" sortOrder="40" action="adminhtml/system_config/edit/section/vdesigner/" resource="Vishal_Designer::config_designer"/>
+    </menu>
+</config>

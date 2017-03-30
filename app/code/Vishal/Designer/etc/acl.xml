@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Vishal_Designer extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Sample
+ * @package   Vishal_Designer
+ * @copyright 2017 Vishal Gelani
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Vishal Gelani
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="Vishal_Designer::elements" title="Designer" sortOrder="10">
+                        <resource id="Vishal_Designer::post" title="Posts" sortOrder="10" />
+                        <resource id="Vishal_Designer::category" title="Categories" sortOrder="20" />
+                        <resource id="Vishal_Designer::import" title="Import" sortOrder="30" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Vishal_Designer::config_designer" title="Designer Section" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
