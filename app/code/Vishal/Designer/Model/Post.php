@@ -25,6 +25,8 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Vishal\Des
      */
     const GALLERY_IMAGES_SEPARATOR = ';';
 
+    protected $_storeManager;
+
     /**
      * Base media folder path
      */
@@ -56,6 +58,7 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Vishal\Des
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Cms\Model\Template\FilterProvider $filterProvider,
+        \Vishal\Designer\Model\ImageFactory $imageFactory,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
@@ -64,6 +67,7 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Vishal\Des
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->_storeManager = $storeManagerInterface;
         $this->filterProvider = $filterProvider;
+        $this->imageFactory = $imageFactory;
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_relatedPostsCollection = clone($this->getCollection());
     }
@@ -76,6 +80,54 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Vishal\Des
     public function getOwnTitle($plural = false)
     {
         return $plural ? 'Posts' : 'Post';
+    }
+
+    /**
+     * Set media gallery images url
+     *
+     * @param array $images
+     * @return this
+     */
+    public function setGalleryImages(array $images)
+    {
+        $this->setData('media_gallery',
+            implode(
+                self::GALLERY_IMAGES_SEPARATOR,
+                $images
+            )
+        );
+
+        /* Reinit Media Gallery Images */
+        $this->unsetData('gallery_images');
+        $this->getGalleryImages();
+
+        return $this;
+    }
+
+    /**
+     * Retrieve media gallery images url
+     * @return string
+     */
+    public function getGalleryImages()
+    {
+        if (!$this->hasData('gallery_images')) {
+            $images = array();
+            $gallery = explode(
+                self::GALLERY_IMAGES_SEPARATOR,
+                $this->getData('media_gallery')
+            );
+            if (!empty($gallery)) {
+                foreach ($gallery as $file) {
+                    if ($file) {
+                        $images[] = $this->imageFactory->create()
+                            ->setFile($file);
+                    }
+                }
+            }
+            $this->setData('gallery_images', $images);
+        }
+
+        return $this->getData('gallery_images');
     }
 
     /**

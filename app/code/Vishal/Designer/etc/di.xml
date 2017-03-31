@@ -56,5 +56,9 @@
             <argument name="imageUploader" xsi:type="object">Vishal\Designer\ImageUpload</argument>
         </arguments>
     </type>
-
+    <type name="Vishal\Designer\Controller\Adminhtml\Post\Upload\Gallery">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Vishal\Designer\ImageUpload</argument>
+        </arguments>
+    </type>
 </config>
