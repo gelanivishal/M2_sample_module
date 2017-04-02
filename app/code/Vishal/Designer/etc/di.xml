@@ -18,7 +18,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="Vishal\Designer\Model\Resource\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <!--<virtualType name="Vishal\Designer\Model\Resource\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">vishal_designer_post</argument>
             <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Post</argument>
@@ -30,6 +30,22 @@
             <argument name="collections" xsi:type="array">
                 <item name="designer_post_listing_data_source" xsi:type="string">Vishal\Designer\Model\Resource\Post\Grid\Collection</item>
             </argument>
+        </arguments>
+    </type>-->
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="designer_post_listing_data_source" xsi:type="string">Vishal\Designer\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Vishal\Designer\Model\ResourceModel\Post\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vishal_designer_post</argument>
+            <argument name="eventPrefix" xsi:type="string">vishal_designer_post_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">post_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Post</argument>
         </arguments>
     </type>
 
