@@ -18,7 +18,7 @@
 namespace Vishal\Designer\Controller\Adminhtml\Category;
 
 /**
- * Designer post list controller
+ * Designer category list controller
  */
 class Index extends \Magento\Backend\App\Action
 {

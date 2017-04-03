@@ -29,4 +29,14 @@ class Category extends \Magento\Framework\Model\AbstractModel implements \Vishal
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
+
+    /**
+     * Retrieve model title
+     * @param  boolean $plural
+     * @return string
+     */
+    public function getOwnTitle($plural = false)
+    {
+        return $plural ? 'Posts' : 'Post';
+    }
 }
