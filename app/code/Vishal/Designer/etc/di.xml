@@ -49,6 +49,21 @@
         </arguments>
     </type>
 
+    <virtualType name="Vishal\Designer\Model\Resource\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vishal_designer_category</argument>
+            <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Category</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="designer_category_listing_data_source" xsi:type="string">Vishal\Designer\Model\Resource\Category\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
     <virtualType name="Vishal\Designer\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
         <arguments>
             <argument name="baseTmpPath" xsi:type="string">designer/tmp</argument>
