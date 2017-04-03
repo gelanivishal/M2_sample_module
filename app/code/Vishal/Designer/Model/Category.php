@@ -39,4 +39,37 @@ class Category extends \Magento\Framework\Model\AbstractModel implements \Vishal
     {
         return $plural ? 'Posts' : 'Post';
     }
+
+    /**
+     * Retrieve parent category ids
+     * @return array
+     */
+    public function getParentIds()
+    {
+        $k = 'parent_ids';
+        if (!$this->hasData($k)) {
+            $this->setData($k,
+                $this->getPath() ? explode('/', $this->getPath()) : []
+            );
+        }
+
+        return $this->getData($k);
+    }
+
+    /**
+     * Retrieve parent category id
+     * @return array
+     */
+    public function getParentId()
+    {
+        $parentIds = $this->getParentIds();
+        if ($parentIds) {
+            return $parentIds[count($parentIds) - 1];
+        }
+
+        return 0;
+    }
+
+
+
 }
