@@ -18,6 +18,8 @@
 namespace Vishal\Designer\Model\ResourceModel\Category;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    protected $_idFieldName = 'category_id';
+
     protected function _construct()
     {
         $this->_init('Vishal\Designer\Model\Category','Vishal\Designer\Model\ResourceModel\Category');
