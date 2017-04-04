@@ -198,7 +198,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function joinStoreRelationTable($tableName, $linkField)
     {
-//        if ($this->getFilter('store_id')) {
+        if ($this->getFilter('store_id')) {
             $this->getSelect()->join(
                 ['store_table' => $this->getTable($tableName)],
                 'main_table.post_id = store_table.post_id',
@@ -207,7 +207,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             // @codingStandardsIgnoreStart
             ->group('main_table.post_id');
             // @codingStandardsIgnoreEnd
-//        }
+        }
         parent::_renderFiltersBefore();
     }
 }

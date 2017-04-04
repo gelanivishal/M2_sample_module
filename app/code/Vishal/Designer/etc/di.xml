@@ -18,6 +18,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Post grid : start -->
     <!--<virtualType name="Vishal\Designer\Model\Resource\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">vishal_designer_post</argument>
@@ -32,7 +33,9 @@
             </argument>
         </arguments>
     </type>-->
+    <!-- Post grid : end -->
 
+    <!-- Post grid with join query: start -->
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -48,8 +51,10 @@
             <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Post</argument>
         </arguments>
     </type>
+    <!-- Post grid with join query: end -->
 
-    <virtualType name="Vishal\Designer\Model\Resource\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <!-- Category grid : start -->
+    <!--<virtualType name="Vishal\Designer\Model\Resource\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">vishal_designer_category</argument>
             <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Category</argument>
@@ -62,7 +67,26 @@
                 <item name="designer_category_listing_data_source" xsi:type="string">Vishal\Designer\Model\Resource\Category\Grid\Collection</item>
             </argument>
         </arguments>
+    </type>-->
+    <!-- Category grid : end -->
+
+    <!-- Category grid with join query: start -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="designer_category_listing_data_source" xsi:type="string">Vishal\Designer\Model\ResourceModel\Category\Grid\Collection</item>
+            </argument>
+        </arguments>
     </type>
+    <type name="Vishal\Designer\Model\ResourceModel\Category\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vishal_designer_category</argument>
+            <argument name="eventPrefix" xsi:type="string">vishal_designer_category_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">category_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Vishal\Designer\Model\ResourceModel\Category</argument>
+        </arguments>
+    </type>
+    <!-- Category grid with join query: end -->
 
     <virtualType name="Vishal\Designer\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
         <arguments>

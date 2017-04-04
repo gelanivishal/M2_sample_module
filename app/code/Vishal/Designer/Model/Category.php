@@ -37,7 +37,7 @@ class Category extends \Magento\Framework\Model\AbstractModel implements \Vishal
      */
     public function getOwnTitle($plural = false)
     {
-        return $plural ? 'Posts' : 'Post';
+        return $plural ? 'Categories' : 'Category';
     }
 
     /**
