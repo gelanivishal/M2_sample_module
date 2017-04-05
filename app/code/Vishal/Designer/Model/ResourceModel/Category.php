@@ -116,4 +116,20 @@ class Category extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $this->getConnection()->insertMultiple($table, $data);
         }
     }
+
+    /**
+     * Perform operations after object load
+     *
+     * @param \Magento\Framework\Model\AbstractModel $object
+     * @return $this
+     */
+    protected function _afterLoad(\Magento\Framework\Model\AbstractModel $object)
+    {
+        if ($object->getId()) {
+            $storeIds = $this->lookupStoreIds($object->getId());
+            $object->setData('store_ids', $storeIds);
+        }
+
+        return parent::_afterLoad($object);
+    }
 }
