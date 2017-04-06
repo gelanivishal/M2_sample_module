@@ -96,6 +96,39 @@ class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         $this->_updateLinks($object, $newIds, $oldIds, 'vishal_designer_post_store', 'store_id');
 
+        /* Save tag links */
+        foreach (['tag' => 'tags'] as $linkType => $dataKey) {
+            $newIds = (array)$object->getData($dataKey);
+            foreach($newIds as $key => $id) {
+                if (!$id) { // e.g.: zero
+                    unset($newIds[$key]);
+                }
+            }
+            if (is_array($newIds)) {
+                $lookup = 'lookup' . ucfirst($linkType) . 'Ids';
+                $oldIds = $this->$lookup($object->getId());
+                $this->_updateLinks(
+                    $object,
+                    $newIds,
+                    $oldIds,
+                    'vishal_designer_post_' . $linkType,
+                    $linkType . '_id'
+                );
+            }
+        }
+
+        /* Save tags links */
+        $newIds = (array)$object->getTags();
+        foreach($newIds as $key => $id) {
+            if (!$id) { // e.g.: zero
+                unset($newIds[$key]);
+            }
+        }
+        if (is_array($newIds)) {
+            $oldIds = $this->lookupTagIds($object->getId());
+            $this->_updateLinks($object, $newIds, $oldIds, 'vishal_designer_post_tag', 'tag_id');
+        }
+
         return parent::_afterSave($object);
     }
 
@@ -173,6 +206,17 @@ class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
             $this->getConnection()->insertMultiple($table, $data);
         }
+    }
+
+    /**
+     * Get tag ids to which specified item is assigned
+     *
+     * @param int $postId
+     * @return array
+     */
+    public function lookupTagIds($postId)
+    {
+        return $this->_lookupIds($postId, 'vishal_designer_post_tag', 'tag_id');
     }
 
     /**

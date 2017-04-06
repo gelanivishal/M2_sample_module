@@ -240,7 +240,7 @@
                 </item>
             </argument>
         </field>
-        <!--<container name="container_tags">
+        <container name="container_tags">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataScope" xsi:type="string"></item>
@@ -252,18 +252,18 @@
             </argument>
             <field name="tags">
                 <argument name="data" xsi:type="array">
-                    <item name="options" xsi:type="object">Magefan\Blog\Model\Config\Source\Tag</item>
+                    <item name="options" xsi:type="object">Vishal\Designer\Model\Config\Source\Tag</item>
                     <item name="config" xsi:type="array">
                         <item name="label" xsi:type="string" translate="true">Tags</item>
                         <item name="formElement" xsi:type="string">select</item>
-                        <item name="component" xsi:type="string">Magefan_Blog/js/components/new-tag</item>
+                        <item name="component" xsi:type="string">Vishal_Designer/js/components/new-tag</item>
                         <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
                         <item name="dataScope" xsi:type="string">tags</item>
                         <item name="filterOptions" xsi:type="boolean">true</item>
                         <item name="chipsEnabled" xsi:type="boolean">true</item>
-                        <item name="showCheckbox" xsi:type="boolean">true</item>&lt;!&ndash;default is true &ndash;&gt;
+                        <item name="showCheckbox" xsi:type="boolean">true</item>
                         <item name="disableLabel" xsi:type="boolean">true</item>
-                        <item name="multiple" xsi:type="boolean">true</item>&lt;!&ndash;default is true &ndash;&gt;
+                        <item name="multiple" xsi:type="boolean">true</item>
                         <item name="levelsVisibility" xsi:type="number">1</item>
                         <item name="sortOrder" xsi:type="number">40</item>
                         <item name="required" xsi:type="boolean">false</item>
@@ -280,7 +280,7 @@
                         <item name="title" xsi:type="string" translate="true">New Tag</item>
                         <item name="formElement" xsi:type="string">container</item>
                         <item name="additionalClasses" xsi:type="string">admin__field-small</item>
-                        &lt;!&ndash; <item name="componentType" xsi:type="string">container</item> &ndash;&gt;
+                        <item name="componentType" xsi:type="string">container</item>
                         <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
                         <item name="template" xsi:type="string">ui/form/components/button/container</item>
 
@@ -305,7 +305,7 @@
                     </item>
                 </argument>
             </container>
-        </container>-->
+        </container>
     </fieldset>
 
     <fieldset name="search_engine_optimisation">
@@ -997,7 +997,7 @@
                 </item>
             </argument>
         </container>
-    </modal>
+    </modal>-->
 
     <modal name="create_tag_modal">
         <argument name="data" xsi:type="array">
@@ -1022,17 +1022,17 @@
                     <item name="dataScope" xsi:type="string"></item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="render_url" xsi:type="url" path="mui/index/render_handle">
-                        <param name="handle">blog_tag_create</param>
+                        <param name="handle">designer_tag_create</param>
                         <param name="buttons">1</param>
                     </item>
                     <item name="autoRender" xsi:type="boolean">false</item>
-                    <item name="ns" xsi:type="string">blog_new_tag_form</item>
-                    <item name="externalProvider" xsi:type="string">blog_new_tag_form.blog_new_tag_form_data_source</item>
+                    <item name="ns" xsi:type="string">designer_new_tag_form</item>
+                    <item name="externalProvider" xsi:type="string">designer_new_tag_form.designer_new_tag_form_data_source</item>
                     <item name="toolbarContainer" xsi:type="string">${ $.parentName }</item>
                     <item name="formSubmitType" xsi:type="string">ajax</item>
                 </item>
             </argument>
         </container>
-    </modal>-->
+    </modal>
 
 </form>

@@ -23,4 +23,32 @@ class Tag extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $this->_init('vishal_designer_tag','tag_id');
     }
 
+    /**
+     * Process tag data before saving
+     *
+     * @param \Magento\Framework\Model\AbstractModel $object
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    protected function _beforeSave(\Magento\Framework\Model\AbstractModel $object)
+    {
+        $object->setTitle(
+            trim(strtolower($object->getTitle()))
+        );
+
+        if (!$object->getId()) {
+            $tag = $object->getCollection()
+                ->addFieldToFilter('title', $object->getTitle())
+                ->setPageSize(1)
+                ->getFirstItem();
+            if ($tag->getId()) {
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __('The tag is already exist.')
+                );
+            }
+        }
+
+        return parent::_beforeSave($object);
+    }
+
 }
