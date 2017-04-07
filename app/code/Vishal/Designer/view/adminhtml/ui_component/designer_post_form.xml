@@ -460,7 +460,7 @@
         </field>
     </fieldset>
 
-    <!--<fieldset name="related">
+    <fieldset name="related">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="collapsible" xsi:type="boolean">true</item>
@@ -468,7 +468,7 @@
                 <item name="sortOrder" xsi:type="number">60</item>
             </item>
         </argument>
-        <fieldset name="post">
+        <!--<fieldset name="post">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="collapsible" xsi:type="boolean">false</item>
@@ -659,7 +659,7 @@
                     </field>
                 </container>
             </dynamicRows>
-        </fieldset>
+        </fieldset>-->
 
         <fieldset name="product">
             <argument name="data" xsi:type="array">
@@ -690,7 +690,7 @@
                                     <item name="actionName" xsi:type="string">toggleModal</item>
                                 </item>
                                 <item name="1" xsi:type="array">
-                                    <item name="targetName" xsi:type="string">designer_post_form.designer_post_form.related.product.modal.blog_related_product_listing</item>
+                                    <item name="targetName" xsi:type="string">designer_post_form.designer_post_form.related.product.modal.designer_related_product_listing</item>
                                     <item name="actionName" xsi:type="string">render</item>
                                 </item>
                             </item>
@@ -719,7 +719,7 @@
                                     <item name="class" xsi:type="string">action-primary</item>
                                     <item name="actions" xsi:type="array">
                                         <item name="0" xsi:type="array">
-                                            <item name="targetName" xsi:type="string">index=blog_related_product_listing</item>
+                                            <item name="targetName" xsi:type="string">index=designer_related_product_listing</item>
                                             <item name="actionName" xsi:type="string">save</item>
                                         </item>
                                         <item name="1" xsi:type="string">closeModal</item>
@@ -729,14 +729,14 @@
                         </item>
                     </item>
                 </argument>
-                <insertListing name="blog_related_product_listing">
+                <insertListing name="designer_related_product_listing">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="autoRender" xsi:type="boolean">false</item>
-                            <item name="dataScope" xsi:type="string">blog_related_product_listing</item>
-                            <item name="externalProvider" xsi:type="string">blog_related_product_listing.blog_related_product_listing_data_source</item>
-                            <item name="selectionsProvider" xsi:type="string">blog_related_product_listing.blog_related_product_listing.product_columns.ids</item>
-                            <item name="ns" xsi:type="string">blog_related_product_listing</item>
+                            <item name="dataScope" xsi:type="string">designer_related_product_listing</item>
+                            <item name="externalProvider" xsi:type="string">designer_related_product_listing.designer_related_product_listing_data_source</item>
+                            <item name="selectionsProvider" xsi:type="string">designer_related_product_listing.designer_related_product_listing.product_columns.ids</item>
+                            <item name="ns" xsi:type="string">designer_related_product_listing</item>
                             <item name="render_url" xsi:type="url" path="mui/index/render" />
                             <item name="realTimeLink" xsi:type="boolean">true</item>
                             <item name="dataLinks" xsi:type="array">
@@ -773,7 +773,7 @@
                         <item name="recordTemplate" xsi:type="string">record</item>
                         <item name="dataScope" xsi:type="string">data.links</item>
                         <item name="deleteButtonLabel" xsi:type="string" translate="true">Remove</item>
-                        <item name="dataProvider" xsi:type="string">data.blog_related_product_listing</item>
+                        <item name="dataProvider" xsi:type="string">data.designer_related_product_listing</item>
                         <item name="map" xsi:type="array">
                             <item name="id" xsi:type="string">entity_id</item>
                             <item name="name" xsi:type="string">name</item>
@@ -851,7 +851,7 @@
                 </container>
             </dynamicRows>
         </fieldset>
-    </fieldset>-->
+    </fieldset>
 
     <fieldset name="design">
         <argument name="data" xsi:type="array">

@@ -16,6 +16,13 @@
  * @author    Vishal Gelani
  */
 namespace Vishal\Designer\Model;
+/*
+ * Post Model
+ *
+ * @method \Vishal\Designer\Model\ResourceModel\Post _getResource()
+ * @method \Vishal\Designer\Model\ResourceModel\Post getResource()
+ * @method int getStoreId()
+ */
 class Post extends \Magento\Framework\Model\AbstractModel implements \Vishal\Designer\Api\Data\PostInterface, \Magento\Framework\DataObject\IdentityInterface
 {
     const CACHE_TAG = 'vishal_designer_post';
@@ -167,5 +174,33 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Vishal\Des
         }
 
         return $this->getData('og_image');
+    }
+
+    /**
+     * Retrieve post related products
+     * @return \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    public function getRelatedProducts()
+    {
+        if (!$this->hasData('related_products')) {
+            $collection = $this->_productCollectionFactory->create();
+
+            if ($this->getStoreId()) {
+                $collection->addStoreFilter($this->getStoreId());
+            }
+
+            $collection->getSelect()->joinLeft(
+                ['rl' => $this->getResource()->getTable('vishal_designer_post_relatedproduct')],
+                'e.entity_id = rl.related_id',
+                ['position']
+            )->where(
+                'rl.post_id = ?',
+                $this->getId()
+            );
+
+            $this->setData('related_products', $collection);
+        }
+
+        return $this->getData('related_products');
     }
 }

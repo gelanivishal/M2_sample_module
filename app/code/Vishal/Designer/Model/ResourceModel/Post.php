@@ -129,6 +129,27 @@ class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $this->_updateLinks($object, $newIds, $oldIds, 'vishal_designer_post_tag', 'tag_id');
         }
 
+        /* Save related post & product links */
+        if ($links = $object->getData('links')) {
+            if (is_array($links)) {
+                foreach (['product'] as $linkType) {
+                    if (!empty($links[$linkType]) && is_array($links[$linkType])) {
+                        $linksData = $links[$linkType];
+                        $lookup = 'lookupRelated' . ucfirst($linkType) . 'Ids';
+                        $oldIds = $this->$lookup($object->getId());
+                        $this->_updateLinks(
+                            $object,
+                            array_keys($linksData),
+                            $oldIds,
+                            'vishal_designer_post_related' . $linkType,
+                            'related_id',
+                            $linksData
+                        );
+                    }
+                }
+            }
+        }
+
         return parent::_afterSave($object);
     }
 
@@ -219,6 +240,16 @@ class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         return $this->_lookupIds($postId, 'vishal_designer_post_tag', 'tag_id');
     }
 
+    /**
+     * Get related product ids to which specified item is assigned
+     *
+     * @param int $postId
+     * @return array
+     */
+    public function lookupRelatedProductIds($postId)
+    {
+        return $this->_lookupIds($postId, 'vishal_designer_post_relatedproduct', 'related_id');
+    }
     /**
      * Perform operations after object load
      *

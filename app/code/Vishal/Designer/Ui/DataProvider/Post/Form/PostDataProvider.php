@@ -119,17 +119,17 @@ class PostDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 //                ];
 //            }
 //            $data['data']['links']['post'] = $items;
-//
-//            /* Prepare related products */
-//            $collection = $post->getRelatedProducts()->addAttributeToSelect('name');
-//            $items = [];
-//            foreach($collection as $item) {
-//                $items[] = [
-//                    'id' => $item->getId(),
-//                    'name' => $item->getName(),
-//                ];
-//            }
-//            $data['data']['links']['product'] = $items;
+
+            /* Prepare related products */
+            $collection = $post->getRelatedProducts()->addAttributeToSelect('name');
+            $items = [];
+            foreach($collection as $item) {
+                $items[] = [
+                    'id' => $item->getId(),
+                    'name' => $item->getName(),
+                ];
+            }
+            $data['data']['links']['product'] = $items;
 
             /* Set data */
             $this->loadedData[$post->getId()] = $data;
